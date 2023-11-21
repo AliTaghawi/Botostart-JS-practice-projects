@@ -1,6 +1,8 @@
 const searchByNameInput = document.querySelector("#searchByName input");
 const products = document.querySelectorAll(".product-card");
 const categoryButtons = document.querySelectorAll(".categorys button");
+const searchByPriceInput = document.querySelector("#searchByPrice input");
+const searchByPriceButton = document.querySelector("#searchByPrice button");
 
 const nameFilterHandler = (event) => {
   const searchValue = event.target.value.toLowerCase().trim();
@@ -26,7 +28,7 @@ const categoryFilterHandler = (event) => {
   products.forEach((product) => {
     if (category === "all") {
       product.style.display = "block";
-    } else {  
+    } else {
       const productCategory = product.dataset.category;
       productCategory === category
         ? (product.style.display = "block")
@@ -35,9 +37,22 @@ const categoryFilterHandler = (event) => {
   });
 };
 
-
+const priceFilterHandler = () => {
+  const filterPrice = searchByPriceInput.value;
+  products.forEach((product) => {
+    if (!filterPrice) {
+      product.style.display = "block";
+    } else {
+      const productPrice = +product.children[2].innerText.split(" ")[1];
+      productPrice <= filterPrice
+        ? (product.style.display = "block")
+        : (product.style.display = "none");
+    }
+  });
+};
 
 searchByNameInput.addEventListener("keyup", nameFilterHandler);
 categoryButtons.forEach((button) => {
   button.addEventListener("click", categoryFilterHandler);
 });
+searchByPriceButton.addEventListener("click", priceFilterHandler);
