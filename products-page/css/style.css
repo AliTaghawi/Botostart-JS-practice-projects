@@ -26,7 +26,7 @@ header h1 {
 }
 
 .searchContainer {
-  margin: 4rem 0 7rem;
+  margin: 3rem 0 5rem;
   font-size: 1.2rem;
   color: #071952;
   display: flex;
@@ -84,13 +84,14 @@ header h1 {
 }
 
 .product-card {
-  border: 2px solid #071952;
+  /* border: 2px solid #071952; */
   max-width: 340px;
   border-radius: 15px;
   padding: 10px;
   background-color: #f2f7a1;
   font-size: 1.2rem;
   color: #071952;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
 }
 
 .product-card img {
