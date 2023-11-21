@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  /* background-color: #583E26; */
+  /* background-color: #9C4A1A; */
+  background-color: #071952;
+  padding: 20px;
+  /* color: #F7C815; */
+  /* color: #EC9704; */
+  color: #F2F7A1;
+}
+
+header h1 {
+  max-width: 1200px;
+  margin: auto;
+  font-size: 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.sreachContainer {
+  margin: 5rem 0;
+  font-size: 1.5rem;
+  color: #071952;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#SreachByPrice input,
+#sreachByName input {
+  font-size: 1.5rem;
+  color: #071952;
+  border: 2px solid #071952;
+  padding: 5px;
+  border-radius: 8px;
+  outline: none;
+}
+
+#SreachByPrice,
+.categorys {
+  display: flex;
+  gap: 2.5rem;
+}
+
+#SreachByPrice button,
+.categorys button {
+  background-color: #071952;
+  color: #F2F7A1;
+  min-width: 150px;
+  font-size: 1.2rem;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+.categorys button.active {
+  background-color: #F2F7A1;
+  color: #071952;
+  border: 2px solid #071952;
+  font-weight: 600;
+}
