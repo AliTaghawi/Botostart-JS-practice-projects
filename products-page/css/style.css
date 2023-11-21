@@ -6,39 +6,37 @@
 }
 
 header {
-  /* background-color: #583E26; */
-  /* background-color: #9C4A1A; */
   background-color: #071952;
   padding: 20px;
-  /* color: #F7C815; */
-  /* color: #EC9704; */
-  color: #F2F7A1;
+  color: #f2f7a1;
 }
 
 header h1 {
   max-width: 1200px;
   margin: auto;
   font-size: 2rem;
+  text-align: center;
 }
 
 .mainContainer {
   max-width: 1200px;
   margin: auto;
+  padding: 1.5rem;
   padding-bottom: 3rem;
 }
 
-.sreachContainer {
-  margin: 5rem 0;
-  font-size: 1.5rem;
+.searchContainer {
+  margin: 4rem 0 7rem;
+  font-size: 1.2rem;
   color: #071952;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-#SreachByPrice input,
-#sreachByName input {
-  font-size: 1.5rem;
+#searchByPrice input,
+#searchByName input {
+  font-size: 1.2rem;
   color: #071952;
   border: 2px solid #071952;
   padding: 5px;
@@ -46,17 +44,17 @@ header h1 {
   outline: none;
 }
 
-#SreachByPrice,
+#searchByPrice,
 .categorys {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
-#SreachByPrice button,
+#searchByPrice button,
 .categorys button {
   background-color: #071952;
-  color: #F2F7A1;
-  min-width: 150px;
+  color: #f2f7a1;
+  min-width: 120px;
   font-size: 1.2rem;
   border: none;
   padding: 8px 20px;
@@ -64,7 +62,7 @@ header h1 {
 }
 
 .categorys button.active {
-  background-color: #F2F7A1;
+  background-color: #f2f7a1;
   color: #071952;
   border: 2px solid #071952;
   font-weight: 600;
@@ -73,7 +71,7 @@ header h1 {
 .products h2 {
   padding: 8px 15px;
   background-color: #071952;
-  color: #F2F7A1;
+  color: #f2f7a1;
   border-radius: 8px;
   margin-bottom: 2rem;
 }
@@ -82,7 +80,7 @@ header h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .product-card {
@@ -90,7 +88,7 @@ header h1 {
   max-width: 340px;
   border-radius: 15px;
   padding: 10px;
-  background-color: #F2F7A1;
+  background-color: #f2f7a1;
   font-size: 1.2rem;
   color: #071952;
 }
@@ -104,9 +102,62 @@ header h1 {
 
 .product-card span {
   display: inline-block;
-  margin-top: .8rem;
+  margin-top: 0.8rem;
   padding: 5px 10px;
   background-color: #088395;
-  color: #F2F7A1;
+  color: #f2f7a1;
   border-radius: 5px;
+}
+
+@media (max-width: 1150px) {
+  .productsContainer {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 950px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .searchContainer {
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: stretch;
+  }
+
+  .categorys {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 300px;
+    justify-content: space-between;
+  }
+
+  .categorys button {
+    width: calc(50% - 1rem);
+  }
+
+  #searchByName,
+  #searchByPrice {
+    width: 100%;
+    max-width: 300px;
+    flex-wrap: wrap;
+  }
+
+  #searchByPrice input,
+  #searchByName input {
+    width: 100%;
+  }
+
+  #searchByPrice button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 315px) {
+  .categorys button {
+    width: 100%;
+  }
 }
