@@ -21,9 +21,10 @@ header h1 {
   font-size: 2rem;
 }
 
-.container {
+.mainContainer {
   max-width: 1200px;
   margin: auto;
+  padding-bottom: 3rem;
 }
 
 .sreachContainer {
@@ -67,4 +68,45 @@ header h1 {
   color: #071952;
   border: 2px solid #071952;
   font-weight: 600;
+}
+
+.products h2 {
+  padding: 8px 15px;
+  background-color: #071952;
+  color: #F2F7A1;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.productsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.product-card {
+  border: 2px solid #071952;
+  max-width: 340px;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #F2F7A1;
+  font-size: 1.2rem;
+  color: #071952;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #071952;
+  margin-bottom: 1rem;
+}
+
+.product-card span {
+  display: inline-block;
+  margin-top: .8rem;
+  padding: 5px 10px;
+  background-color: #088395;
+  color: #F2F7A1;
+  border-radius: 5px;
 }
