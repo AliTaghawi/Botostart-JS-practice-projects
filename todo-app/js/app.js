@@ -1,8 +1,9 @@
 const taskInput = document.getElementById("task-input");
 const dateInput = document.getElementById("date-input");
 const addButton = document.getElementById("add-todo");
-const todos = [];
+const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
+//functions
 const generatId = () => {
   return (
     "ID" +
@@ -13,6 +14,11 @@ const generatId = () => {
   );
 };
 
+const saveData = () => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+//handlers
 const addHandler = (event) => {
   event.preventDefault();
   const task = taskInput.value;
@@ -24,9 +30,11 @@ const addHandler = (event) => {
     date,
   };
   todos.push(todo);
+  saveData()
   taskInput.value = "";
   dateInput.value = "";
-  console.log(todos)
+  console.log(todos);
+  console.log(localStorage.getItem("todos"))
 };
 
 addButton.addEventListener("click", addHandler);
