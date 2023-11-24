@@ -54,7 +54,7 @@ const renderTodos = () => {
           <td>${todo.status ? "Completed" : "Pending"}</td>
           <td>
             <button>Edit</button>
-            <button>${todo.status ? "Undo" : "Do"}</button>
+            <button onclick="statusHandler('${todo.id}')">${todo.status ? "Undo" : "Do"}</button>
             <button onclick="deleteHandler('${todo.id}')">Delete</button>
           </td>
         </tr>
@@ -102,6 +102,14 @@ const deleteHandler = (id) => {
   renderTodos();
   setAlert("success", "task deleted successfully");
 };
+
+const statusHandler = (id) => {
+  const todo = todos.find(todo => todo.id === id);
+  todo.status = !todo.status;
+  saveData();
+  renderTodos();
+  setAlert("success", "Status changed successfully");
+}
 
 window.addEventListener("load", renderTodos);
 addButton.addEventListener("click", addHandler);
