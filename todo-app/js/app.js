@@ -7,6 +7,7 @@ const deleteAllButton = document.getElementById("delete-all");
 const editCancelDiv = document.querySelector(".edit-cancel")
 const editButton = editCancelDiv.children[0];
 const cancelButton = editCancelDiv.children[1];
+const filterButtons = document.querySelectorAll(".filter")
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 //functions
@@ -148,8 +149,25 @@ const editHandler = (event) => {
   setAlert("success", "Task edited successfully")
 }
 
+const filterHandler = (event) => {
+  filterButtons.forEach(button => {
+    button === event.target ? button.classList.add("active") : button.classList.remove("active");
+  });
+  const filter = event.target.innerText.toLowerCase();
+  const todoTrs = tbody.querySelectorAll("tr");
+  if (filter === "all") {
+    todoTrs.forEach(todo => todo.style.display = "table-row");
+  } else {
+    todoTrs.forEach(todo => {
+      const status = todo.children[2].innerText.toLowerCase();
+      status === filter ? todo.style.display = "table-row" : todo.style.display = "none";
+    });
+  };
+};
+
 window.addEventListener("load", renderTodos);
 addButton.addEventListener("click", addHandler);
 deleteAllButton.addEventListener("click", deleteAllHandler);
 cancelButton.addEventListener("click", cancelHandler)
 editButton.addEventListener("click", editHandler)
+filterButtons.forEach(button => {button.addEventListener("click", filterHandler)})

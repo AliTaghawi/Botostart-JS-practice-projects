@@ -69,6 +69,13 @@ button:hover {
   opacity: 0.8;
 }
 
+button.active {
+  padding: 8px 13px;
+  border: 2px solid var(--color-button);
+  background-color: var(--color-background);
+  color: var(--color-button);
+}
+
 #delete-all {
   background-color: var(--color-delete);
 }
