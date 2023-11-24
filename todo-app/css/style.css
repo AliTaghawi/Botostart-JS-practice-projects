@@ -1,0 +1,83 @@
+:root {
+  --color-basic: #1e3d42;
+  --color-background: #fafbff;
+  --color-button: #c97417;
+  --color-delete: #47221a;
+  --color-input: #f1c682;
+  --color-error: salmon;
+  --color-success: limegreen;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  color: #1e3d42;
+}
+
+main {
+  width: 1000px;
+  margin: auto;
+}
+
+.container {
+  width: 100%;
+  margin: 40px auto 10px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(30, 62, 67, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.input-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-section input {
+  width: 100%;
+  border: 1px solid var(--color-input);
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.input-section input:focus {
+  outline: none;
+  border-width: 2px;
+}
+
+button {
+  background-color: var(--color-button);
+  color: var(--color-background);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+#delete-all {
+  background-color: var(--color-delete);
+}
+
+.edit-cancel {
+  display: none;
+  gap: 10px;
+}
+
+.todo-operators {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-operators div button {
+  margin-right: 10px;
+}
