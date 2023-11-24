@@ -4,6 +4,7 @@ const addButton = document.getElementById("add-todo");
 const alertBox = document.getElementById("alert-box");
 const tbody = document.querySelector("tbody");
 const deleteAllButton = document.getElementById("delete-all");
+const editCancelDiv = document.querySelector(".edit-cancel")
 
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -53,7 +54,7 @@ const renderTodos = () => {
           <td>${todo.date || "No Date"}</td>
           <td>${todo.status ? "Completed" : "Pending"}</td>
           <td>
-            <button>Edit</button>
+            <button onclick="editHandler('${todo.id}')">Edit</button>
             <button onclick="statusHandler('${todo.id}')">${todo.status ? "Undo" : "Do"}</button>
             <button onclick="deleteHandler('${todo.id}')">Delete</button>
           </td>
@@ -109,6 +110,16 @@ const statusHandler = (id) => {
   saveData();
   renderTodos();
   setAlert("success", "Status changed successfully");
+}
+
+const editHandler = (id) => {
+  const editButton = editCancelDiv.children[0];
+  const todo = todos.find(todo => todo.id === id);
+  taskInput.value = todo.task;
+  dateInput.value = todo.date;
+  addButton.style.display = "none";
+  editCancelDiv.style.display = "flex";
+  editButton.dataset.id = id;
 }
 
 window.addEventListener("load", renderTodos);
