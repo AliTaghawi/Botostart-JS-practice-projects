@@ -136,7 +136,20 @@ const cancelHandler = (event) => {
   setAlert("success", "Edit canceled successfully")
 }
 
+const editHandler = (event) => {
+  event.preventDefault();
+  const id = event.target.dataset.id
+  const todo = todos.find(todo => todo.id === id)
+  todo.task = taskInput.value
+  todo.date = dateInput.value
+  saveData();
+  cancelEdit();
+  renderTodos();
+  setAlert("success", "Task edited successfully")
+}
+
 window.addEventListener("load", renderTodos);
 addButton.addEventListener("click", addHandler);
 deleteAllButton.addEventListener("click", deleteAllHandler);
 cancelButton.addEventListener("click", cancelHandler)
+editButton.addEventListener("click", editHandler)
