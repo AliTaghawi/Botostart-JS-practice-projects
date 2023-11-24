@@ -3,8 +3,9 @@ const dateInput = document.getElementById("date-input");
 const addButton = document.getElementById("add-todo");
 const alertBox = document.getElementById("alert-box");
 const tbody = document.querySelector("tbody");
+const deleteAllButton = document.getElementById("delete-all");
 
-const todos = JSON.parse(localStorage.getItem("todos")) || [];
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 //functions
 const generatId = () => {
@@ -84,5 +85,17 @@ const addHandler = (event) => {
   }
 };
 
+const deleteAllHandler = () => {
+  if (todos.length) {
+    todos = [];
+    saveData();
+    renderTodos();
+    setAlert("success", "All tasks deleted successfully");
+  } else {
+    setAlert("error", "There is no task to clear!");
+  }
+};
+
 window.addEventListener("load", renderTodos);
 addButton.addEventListener("click", addHandler);
+deleteAllButton.addEventListener("click", deleteAllHandler);
