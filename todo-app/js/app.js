@@ -1,9 +1,10 @@
 const taskInput = document.getElementById("task-input");
 const dateInput = document.getElementById("date-input");
 const addButton = document.getElementById("add-todo");
-const alertBox = document.getElementById("alert-box")
-const todos = JSON.parse(localStorage.getItem("todos")) || [];
+const alertBox = document.getElementById("alert-box");
+const tbody = document.querySelector("tbody");
 
+const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 //functions
 const generatId = () => {
@@ -21,21 +22,46 @@ const saveData = () => {
 };
 
 const setAlert = (type, message) => {
-  alertBox.innerHTML = ""
-  const alert = document.createElement("p")
-  alert.classList.add("alert")
-  alert.classList.add(`alert-${type}`)
-  alert.innerText = message
+  alertBox.innerHTML = "";
+  const alert = document.createElement("p");
+  alert.classList.add("alert");
+  alert.classList.add(`alert-${type}`);
+  alert.innerText = message;
   setTimeout(() => {
-    alertBox.append(alert)
-  }, 10)
-  
+    alertBox.append(alert);
+  }, 10);
+
   setTimeout(() => {
-    alert.style.display = "none"
-  }, 2000)
-}
+    alert.style.display = "none";
+  }, 2000);
+};
 
 //handlers
+const renderTodos = () => {
+  //loadHandler
+  if (!todos.length) {
+    tbody.innerHTML = `<tr><td colspan="4">No task found!</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = `${todos
+    .map((todo) => {
+      return `
+        <tr>
+          <td>${todo.task}</td>
+          <td>${todo.date || "No Date"}</td>
+          <td>${todo.status ? "Completed" : "Pending"}</td>
+          <td>
+            <button>Edit</button>
+            <button>${todo.status ? "Undo" : "Do"}</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+      `;
+    })
+    .join("")}`;
+};
+
 const addHandler = (event) => {
   event.preventDefault();
   const task = taskInput.value;
@@ -48,13 +74,15 @@ const addHandler = (event) => {
       date,
     };
     todos.push(todo);
-    saveData()
-    setAlert("success", "Task added successfully")
+    saveData();
+    renderTodos();
+    setAlert("success", "Task added successfully");
     taskInput.value = "";
     dateInput.value = "";
   } else {
-    setAlert("error", "Please insert task first!")
+    setAlert("error", "Please insert task first!");
   }
 };
 
+window.addEventListener("load", renderTodos);
 addButton.addEventListener("click", addHandler);
