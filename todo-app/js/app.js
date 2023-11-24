@@ -5,7 +5,8 @@ const alertBox = document.getElementById("alert-box");
 const tbody = document.querySelector("tbody");
 const deleteAllButton = document.getElementById("delete-all");
 const editCancelDiv = document.querySelector(".edit-cancel")
-
+const editButton = editCancelDiv.children[0];
+const cancelButton = editCancelDiv.children[1];
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 //functions
@@ -38,6 +39,14 @@ const setAlert = (type, message) => {
   }, 2000);
 };
 
+const cancelEdit = () => {
+  taskInput.value = "";
+  dateInput.value = "";
+  editCancelDiv.style.display = "none";
+  addButton.style.display = "block";
+  editButton.dataset.id = null;
+}
+
 //handlers
 const renderTodos = () => {
   //loadHandler
@@ -54,7 +63,7 @@ const renderTodos = () => {
           <td>${todo.date || "No Date"}</td>
           <td>${todo.status ? "Completed" : "Pending"}</td>
           <td>
-            <button onclick="editHandler('${todo.id}')">Edit</button>
+            <button onclick="editTodoHandler('${todo.id}')">Edit</button>
             <button onclick="statusHandler('${todo.id}')">${todo.status ? "Undo" : "Do"}</button>
             <button onclick="deleteHandler('${todo.id}')">Delete</button>
           </td>
@@ -112,8 +121,7 @@ const statusHandler = (id) => {
   setAlert("success", "Status changed successfully");
 }
 
-const editHandler = (id) => {
-  const editButton = editCancelDiv.children[0];
+const editTodoHandler = (id) => {
   const todo = todos.find(todo => todo.id === id);
   taskInput.value = todo.task;
   dateInput.value = todo.date;
@@ -122,6 +130,13 @@ const editHandler = (id) => {
   editButton.dataset.id = id;
 }
 
+const cancelHandler = (event) => {
+  event.preventDefault();
+  cancelEdit();
+  setAlert("success", "Edit canceled successfully")
+}
+
 window.addEventListener("load", renderTodos);
 addButton.addEventListener("click", addHandler);
 deleteAllButton.addEventListener("click", deleteAllHandler);
+cancelButton.addEventListener("click", cancelHandler)
