@@ -55,7 +55,7 @@ const renderTodos = () => {
           <td>
             <button>Edit</button>
             <button>${todo.status ? "Undo" : "Do"}</button>
-            <button>Delete</button>
+            <button onclick="deleteHandler('${todo.id}')">Delete</button>
           </td>
         </tr>
       `;
@@ -94,6 +94,13 @@ const deleteAllHandler = () => {
   } else {
     setAlert("error", "There is no task to clear!");
   }
+};
+
+const deleteHandler = (id) => {
+  todos = todos.filter((todo) => todo.id !== id);
+  saveData();
+  renderTodos();
+  setAlert("success", "task deleted successfully");
 };
 
 window.addEventListener("load", renderTodos);
