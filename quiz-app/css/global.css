@@ -13,6 +13,11 @@ body {
   background-color: #eeedfb;
 }
 
+.title {
+  color: #6757d9;
+  font-size: 2rem;
+}
+
 .button1 {
   background-color: #fff;
   color: #6757d9;
@@ -27,7 +32,20 @@ body {
   transition: all .2s ease-in;
 }
 
-.button1:hover {
+.button1:hover,
+.button2:hover {
   background-color: #6757d9;
   color: #fff;
+}
+
+.button2 {
+  background-color: #eeedfb;
+  border: 2px solid #6757d9;
+  color: #6757d9;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 15px;
+  border-radius: 15px;
+  transition: all .2s ease-in;
 }
