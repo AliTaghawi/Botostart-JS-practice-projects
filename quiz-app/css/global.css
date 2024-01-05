@@ -44,8 +44,8 @@ body {
   color: #6757d9;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 600;
-  padding: 15px;
+  /* font-weight: 600; */
+  padding: 8px 15px;
   border-radius: 15px;
   transition: all .2s ease-in;
 }
