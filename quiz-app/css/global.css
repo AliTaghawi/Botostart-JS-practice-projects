@@ -4,3 +4,30 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+body {
+  padding: 100px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eeedfb;
+}
+
+.button1 {
+  background-color: #fff;
+  color: #6757d9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  transition: all .2s ease-in;
+}
+
+.button1:hover {
+  background-color: #6757d9;
+  color: #fff;
+}
