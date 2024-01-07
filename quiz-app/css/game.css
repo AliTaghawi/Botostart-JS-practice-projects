@@ -38,6 +38,8 @@
 
 #container {
   display: none;
+  width: 100%;
+  max-width: 700px;
 }
 
 #header {
@@ -83,9 +85,6 @@
   background-color: #6757d9;
   padding: 15px;
   border-radius: 15px;
-  width: 100%;
-  max-width: 700px;
-  /* min-width: 450px; */
   font-size: 1.2rem;
   margin-bottom: 30px;
 }

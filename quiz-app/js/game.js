@@ -8,6 +8,7 @@ const answerList = document.querySelectorAll(".answer-text")
 const scoreEle = document.getElementById("score")
 const questionCounter = document.getElementById("question-counter")
 const nextButton = document.getElementById("next-button")
+const finishButton = document.getElementById("finish-button")
 
 const difficulty = localStorage.getItem("difficulty") || "medium"
 const URL = `https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type=multiple`
@@ -67,12 +68,18 @@ const nextHandler = () => {
     showQuestion()
     isClicked = false
   } else {
-    console.log("finish")
+    finishHandler()
   }
+}
+
+const finishHandler = () => {
+  localStorage.setItem("score", JSON.stringify(score))
+  location.assign("./end.html")
 }
 
 window.addEventListener("load", fetchData)
 nextButton.addEventListener("click", nextHandler)
+finishButton.addEventListener("click", finishHandler)
 answerList.forEach((button, index) => {
   button.addEventListener("click", (event) => answerHandler(event, index))
 })
