@@ -5,13 +5,16 @@ const container = document.getElementById("container")
 const errorEle = document.getElementById("error")
 const questionText = document.getElementById("question-text")
 const answerList = document.querySelectorAll(".answer-text")
+const scoreEle = document.getElementById("score")
 
 const difficulty = localStorage.getItem("difficulty") || "medium"
 const URL = `https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type=multiple`
+const SCORE_BUNOS = 10
 let formattedData = null;
 let questionNumber = 0;
 let correctAnswer = null
 let isClicked = false;
+let score = 0
 
 const showQuestion = () => {
   const {question, answers, correctAnswerIndex} = formattedData[questionNumber]
@@ -46,6 +49,8 @@ const answerHandler = (event, index) => {
   const isCorrect = index == correctAnswer
   if (isCorrect) {
     event.target.classList.add("correct")
+    score += SCORE_BUNOS
+    scoreEle.innerText = score
   } else {
     event.target.classList.add("incorrect")
     answerList[correctAnswer].classList.add("correct")
