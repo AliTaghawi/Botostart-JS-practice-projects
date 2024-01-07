@@ -11,6 +11,7 @@ const URL = `https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type
 let formattedData = null;
 let questionNumber = 0;
 let correctAnswer = null
+let isClicked = false;
 
 const showQuestion = () => {
   const {question, answers, correctAnswerIndex} = formattedData[questionNumber]
@@ -39,4 +40,19 @@ const fetchData = async () => {
   }
 }
 
+const answerHandler = (event, index) => {
+  if (isClicked) return;
+  isClicked = true;
+  const isCorrect = index == correctAnswer
+  if (isCorrect) {
+    event.target.classList.add("correct")
+  } else {
+    event.target.classList.add("incorrect")
+    answerList[correctAnswer].classList.add("correct")
+  }
+}
+
 window.addEventListener("load", fetchData)
+answerList.forEach((button, index) => {
+  button.addEventListener("click", (event) => answerHandler(event, index))
+})
