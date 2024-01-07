@@ -1,0 +1,33 @@
+p {
+  font-size: 3rem;
+  font-weight: 600;
+  width: 100px;
+  height: 100px;
+  line-height: 102px;
+  text-align: center;
+  background-color: #6757d9;
+  color: #fff;
+  border-radius: 30px;
+  margin-bottom: 50px;
+}
+
+input {
+  border: 3px solid #fff;
+  background-color: #eeedfb;
+  font-size: 1rem;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6757d9;
+}
+
+input,
+button,
+a {
+  width: 100%;
+  max-width: 300px;
+}
