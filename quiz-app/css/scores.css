@@ -3,9 +3,9 @@ h2 {
 }
 
 ol {
-  min-width: 300px;
+  min-width: 350px;
   max-width: 500px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 li {
@@ -17,8 +17,8 @@ li {
   background-color: #fff;
   padding: 15px;
   border-radius: 15px;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 1rem;
+  margin-bottom: 20px;
 }
 
 span {
