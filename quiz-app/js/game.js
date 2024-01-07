@@ -6,6 +6,8 @@ const errorEle = document.getElementById("error")
 const questionText = document.getElementById("question-text")
 const answerList = document.querySelectorAll(".answer-text")
 const scoreEle = document.getElementById("score")
+const questionCounter = document.getElementById("question-counter")
+const nextButton = document.getElementById("next-button")
 
 const difficulty = localStorage.getItem("difficulty") || "medium"
 const URL = `https://opentdb.com/api.php?amount=10&difficulty=${difficulty}&type=multiple`
@@ -19,9 +21,11 @@ let score = 0
 const showQuestion = () => {
   const {question, answers, correctAnswerIndex} = formattedData[questionNumber]
   correctAnswer = correctAnswerIndex
+  questionCounter.innerText = questionNumber + 1
   questionText.innerHTML = question
   answerList.forEach((button, index) => {
     button.innerHTML = answers[index]
+    button.className = "answer-text"
   })
 }
 
@@ -57,7 +61,18 @@ const answerHandler = (event, index) => {
   }
 }
 
+const nextHandler = () => {
+  questionNumber++
+  if (questionNumber < formattedData.length) {
+    showQuestion()
+    isClicked = false
+  } else {
+    console.log("finish")
+  }
+}
+
 window.addEventListener("load", fetchData)
+nextButton.addEventListener("click", nextHandler)
 answerList.forEach((button, index) => {
   button.addEventListener("click", (event) => answerHandler(event, index))
 })
