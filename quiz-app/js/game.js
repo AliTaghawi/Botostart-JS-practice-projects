@@ -42,6 +42,7 @@ const fetchData = async () => {
     const  data = await res.json()
     formattedData = formatData(data.results)
     start()
+    localStorage.removeItem("difficulty")
   } catch (err) {
     loader.style.display = "none"
     errorEle.style.display = "flex"

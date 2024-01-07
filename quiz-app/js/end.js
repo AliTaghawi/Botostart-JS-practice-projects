@@ -5,10 +5,18 @@ const scoreEle = document.querySelector("p")
 const input = document.querySelector("input")
 const savebutton = document.querySelector("button")
 
-scoreEle.innerText = score
+const loadHandler = () => {
+  if (!score) {
+    input.style.pointerEvents = "none"
+    input.style.opacity = ".55"
+    savebutton.style.pointerEvents = "none"
+    savebutton.style.opacity = ".55"
+  }
+  scoreEle.innerText = score
+}
 
 const saveHandler = () => {
-  if (!score || !input.value) {
+  if (!input.value) {
     alert("Invalid score or username")
   } else {
     highScores.push({name: input.value, score})
@@ -20,4 +28,5 @@ const saveHandler = () => {
   }
 }
 
+window.addEventListener("load", loadHandler)
 savebutton.addEventListener("click", saveHandler)
